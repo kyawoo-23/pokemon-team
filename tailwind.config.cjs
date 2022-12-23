@@ -11,6 +11,9 @@ module.exports = {
         cardBg: "#fbfbfb",
         cardBgHover: "#f1f1f1",
       },
+      spacing: {
+        38: "9.5rem",
+      },
     },
   },
   plugins: [],

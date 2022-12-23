@@ -10,8 +10,9 @@ const teamsSlice = createSlice({
     deleteTeam(state, action) {
       state.splice(action.payload, 1)
     },
-    addPokemon(state, action) {
-      console.log(action)
+    addPokemon(state, { payload }) {
+      const { teamId, pokeId } = payload
+      state[teamId].members.push(pokeId)
     },
   },
 })

@@ -2,12 +2,11 @@ import React from "react"
 import BackDrop from "./BackDrop"
 import { MdClose } from "react-icons/md"
 import { useState } from "react"
-import { createTeam } from "../store"
-import { useDispatch } from "react-redux"
+import { useCreateTeam } from "../hooks/useCreateTeam"
 
 const Modal = ({ setModalOpen }) => {
   const [teamName, setTeamName] = useState("")
-  const dispatch = useDispatch()
+  const { handleNewTeam } = useCreateTeam(teamName)
 
   const handleModalClose = () => {
     setModalOpen(false)
@@ -15,11 +14,7 @@ const Modal = ({ setModalOpen }) => {
 
   const handleCreateTeam = (e) => {
     e.preventDefault()
-    const createdTeam = {
-      teamName,
-      members: [],
-    }
-    dispatch(createTeam(createdTeam))
+    handleNewTeam()
     setModalOpen(false)
   }
 
