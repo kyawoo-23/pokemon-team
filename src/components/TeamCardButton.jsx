@@ -1,13 +1,22 @@
-import React from "react"
 import { BsArrowRepeat } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
+import { useRemoveMember } from "../hooks/useRemoveMember"
 
-const TeamCardButton = ({ isReplace }) => {
+const TeamCardButton = ({ isReplace, teamId, member }) => {
+  const { handleRemovePokemon } = useRemoveMember(member)
+
+  const handleReplace = () => {}
+
+  const handleRemove = () => {
+    handleRemovePokemon(teamId)
+  }
+
   return (
     <button
       className={`${
         isReplace ? "bg-orange-500" : "bg-primary"
       }  w-1/2 py-1 grid place-content-center rounded-md`}
+      onClick={isReplace ? handleReplace : handleRemove}
     >
       {isReplace ? (
         <BsArrowRepeat className="text-active h-6 w-6" />

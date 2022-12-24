@@ -1,16 +1,11 @@
 import { useDispatch } from "react-redux"
 import { addPokemon } from "../store"
 
-export const useAddMember = (teamId, pokeId) => {
+export const useAddMember = (pokeName) => {
   const dispatch = useDispatch()
 
-  const addInfo = {
-    teamId,
-    pokeId,
-  }
-
-  const handleAddPokemon = () => {
-    dispatch(addPokemon(addInfo))
+  const handleAddPokemon = (teamId) => {
+    dispatch(addPokemon({ teamId, pokeName }))
   }
 
   return { handleAddPokemon }

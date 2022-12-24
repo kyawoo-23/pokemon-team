@@ -3,7 +3,7 @@ import { useState } from "react"
 import Layout from "../components/Layout"
 import { useSelector } from "react-redux"
 import { MdOutlineAddCircle } from "react-icons/md"
-import Modal from "../components/Modal"
+import CreateTeamOnlyModal from "../components/CreateTeamOnlyModal"
 import TeamCard from "../components/TeamCard"
 
 const Team = () => {
@@ -18,11 +18,16 @@ const Team = () => {
 
   return (
     <Layout title="My teams">
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <CreateTeamOnlyModal setModalOpen={setModalOpen} />}
       {teamList.length !== 0 ? (
         <>
-          {teamList.map(({ teamName }, idx) => (
-            <TeamCard teamName={teamName} id={idx} key={idx} />
+          {teamList.map(({ teamName, teamId, members }) => (
+            <TeamCard
+              teamName={teamName}
+              teamId={teamId}
+              members={members}
+              key={teamId}
+            />
           ))}
           <div
             className="fixed bottom-10 right-10 h-12 w-12 bg-primary rounded-full grid place-content-center cursor-pointer"

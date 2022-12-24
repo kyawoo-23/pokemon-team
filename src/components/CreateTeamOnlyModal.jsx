@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md"
 import { useState } from "react"
 import { useCreateTeam } from "../hooks/useCreateTeam"
 
-const Modal = ({ setModalOpen }) => {
+const CreateTeamOnlyModal = ({ setModalOpen }) => {
   const [teamName, setTeamName] = useState("")
   const { handleNewTeam } = useCreateTeam(teamName)
 
@@ -51,4 +51,4 @@ const Modal = ({ setModalOpen }) => {
   )
 }
 
-export default Modal
+export default CreateTeamOnlyModal

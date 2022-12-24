@@ -1,25 +1,41 @@
-import React from "react"
+import React, { useState } from "react"
+import { useFetchPokemonDetailsQuery } from "../store"
+import AddPokemonModal from "./AddPokemonModal"
 
 const PokeCard = ({ name }) => {
-  const handleAddToTeam = () => {}
+  const [modalOpen, setModalOpen] = useState(false)
+  const { data, error, isFetching } = useFetchPokemonDetailsQuery(name)
+
+  const handleAddToTeam = () => {
+    setModalOpen(true)
+  }
 
   return (
-    <div className="border-2 border-secondary bg-cardBg rounded-2xl p-5 flex flex-col gap-y-4 cursor-pointer hover:bg-cardBgHover transition-all">
-      <img
-        className="w-52 h-52 object-contain"
-        src="https://api.lorem.space/image/game"
-        alt="name"
-      />
+    <>
+      {modalOpen && (
+        <AddPokemonModal pokeName={name} setModalOpen={setModalOpen} />
+      )}
+      <div className="border-2 border-secondary bg-cardBg rounded-2xl p-5 flex flex-col gap-y-4 cursor-pointer hover:bg-cardBgHover transition-all">
+        {isFetching ? (
+          <p>Loading img</p>
+        ) : (
+          <img
+            className="w-52 h-52 object-contain"
+            src={data.sprites.other.home.front_default}
+            alt={name}
+          />
+        )}
 
-      <p className="font-semibold text-xl">{name}</p>
+        <p className="font-semibold text-xl capitalize">{name}</p>
 
-      <button
-        className="border-2 border-secondary w-full rounded-lg uppercase font-medium text-lg py-1 text-secondary hover:bg-secondary hover:text-black transition-all"
-        onClick={handleAddToTeam}
-      >
-        Add to team
-      </button>
-    </div>
+        <button
+          className="border-2 border-secondary w-full rounded-lg uppercase font-medium text-lg p-1 text-secondary hover:bg-secondary hover:text-black transition-all"
+          onClick={handleAddToTeam}
+        >
+          Add to team
+        </button>
+      </div>
+    </>
   )
 }
 

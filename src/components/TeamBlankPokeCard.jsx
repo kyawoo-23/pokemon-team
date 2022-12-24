@@ -11,7 +11,7 @@ const TeamBlankPokeCard = ({ teamId }) => {
 
   return (
     <div
-      className="border-2 border-dashed border-primary rounded-xl flex flex-col items-center justify-center py-14 grow cursor-pointer"
+      className="border-2 border-dashed border-primary rounded-xl flex flex-col items-center justify-center py-16 grow cursor-pointer"
       onClick={handleAddMember}
     >
       <HiPlus className="text-primary h-20 w-20" />
