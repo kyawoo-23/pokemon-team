@@ -7,7 +7,7 @@ import {
   removePokemon,
 } from "./slices/teamsSlice"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { pokeApi } from "./apis/pokeapi"
+import { pokeApi } from "./apis/pokeApi"
 import { pokeDetailsApi } from "./apis/pokeDetailsApi"
 import { pageSliceReducer, loadMorePage } from "./slices/pageSlice"
 
