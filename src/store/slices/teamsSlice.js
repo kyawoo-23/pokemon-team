@@ -14,7 +14,9 @@ const teamsSlice = createSlice({
     addPokemon(state, { payload }) {
       const { teamId, pokeName } = payload
       const index = state.findIndex((s) => s.teamId === teamId)
-      state[index].members.push(pokeName)
+      if (!state[index].members.includes(pokeName)) {
+        state[index].members.push(pokeName)
+      }
     },
     removePokemon(state, { payload }) {
       const { teamId, member } = payload

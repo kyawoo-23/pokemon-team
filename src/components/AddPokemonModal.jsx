@@ -11,9 +11,9 @@ import CheckBoxTeamList from "./CheckBoxTeamList"
 const AddPokemonModal = ({ setModalOpen, pokeName }) => {
   const [teamName, setTeamName] = useState("")
   const [showCreateTeamSection, setShowCreateTeamSection] = useState(false)
-  const { handleNewTeam, teamId } = useCreateTeam(teamName)
-  const { handleAddPokemon } = useAddMember(pokeName)
-  const { handleRemovePokemon } = useRemoveMember(pokeName)
+  const { handleNewTeam, teamId } = useCreateTeam()
+  const { handleAddPokemon } = useAddMember()
+  const { handleRemovePokemon } = useRemoveMember()
   const teamsList = useGetTeamsList()
   const [selectedTeam, setSelectedTeam] = useState([])
   const [removedTeam, setRemovedTeam] = useState([])
@@ -26,16 +26,16 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
   const handleAddToTeam = (e) => {
     e.preventDefault()
     if (teamName !== "") {
-      handleNewTeam()
-      handleAddPokemon(teamId)
+      handleNewTeam(teamName)
+      handleAddPokemon(teamId, pokeName)
     }
     console.log("sele team", selectedTeam)
     selectedTeam?.map((stid) => {
-      handleAddPokemon(stid)
+      handleAddPokemon(stid, pokeName)
     })
 
     removedTeam?.map((rtid) => {
-      handleRemovePokemon(rtid)
+      handleRemovePokemon(rtid, pokeName)
     })
 
     setSelectedTeam([])
@@ -62,18 +62,18 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
   return (
     <BackDrop>
       <div
-        className="bg-primary rounded-md p-5 flex flex-col gap-y-8"
+        className='bg-primary rounded-md p-5 flex flex-col gap-y-8'
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between">
-          <h1 className="mr-64 text-xl text-active font-medium">
+        <div className='flex items-center justify-between'>
+          <h1 className='mr-64 text-xl text-active font-medium'>
             Add {pokeName} to...
           </h1>
           <button onClick={handleModalClose}>
-            <MdClose className="text-active w-8 h-8" />
+            <MdClose className='text-active w-8 h-8' />
           </button>
         </div>
-        <form onSubmit={handleAddToTeam} className="flex flex-col gap-y-6">
+        <form onSubmit={handleAddToTeam} className='flex flex-col gap-y-6'>
           {teamsList?.map(({ teamName, teamId, members }) => (
             <CheckBoxTeamList
               teamName={teamName}
@@ -86,17 +86,17 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
           ))}
 
           <div
-            className="mt-2 flex items-center gap-4 cursor-pointer"
+            className='mt-2 flex items-center gap-4 cursor-pointer'
             onClick={handleShowCreateTeamSection}
           >
-            <HiPlus className="text-active h-6 w-6" />
-            <span className="text-active">Create a new team</span>
+            <HiPlus className='text-active h-6 w-6' />
+            <span className='text-active'>Create a new team</span>
           </div>
           {showCreateTeamSection && (
             <>
               <input
-                className="p-2 w-full outline-0 rounded-md bg-inactive focus:bg-active"
-                type="text"
+                className='p-2 w-full outline-0 rounded-md bg-inactive focus:bg-active'
+                type='text'
                 value={teamName}
                 required
                 onChange={(e) => setTeamName(e.target.value)}
@@ -105,9 +105,9 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
             </>
           )}
           <input
-            className="ml-auto w-1/4 border border-inactive p-2 text-inactive cursor-pointer font-medium rounded-md hover:bg-inactive hover:text-primary transition-all"
-            type="submit"
-            value="Add"
+            className='ml-auto w-1/4 border border-inactive p-2 text-inactive cursor-pointer font-medium rounded-md hover:bg-inactive hover:text-primary transition-all'
+            type='submit'
+            value='Add'
           />
         </form>
       </div>

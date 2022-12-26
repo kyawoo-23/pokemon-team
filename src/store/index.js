@@ -9,10 +9,12 @@ import {
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { pokeApi } from "./apis/pokeapi"
 import { pokeDetailsApi } from "./apis/pokeDetailsApi"
+import { pageSliceReducer, loadMorePage } from "./slices/pageSlice"
 
 const store = configureStore({
   reducer: {
     teams: teamsSliceReducer,
+    page: pageSliceReducer,
     [pokeApi.reducerPath]: pokeApi.reducer,
     [pokeDetailsApi.reducerPath]: pokeDetailsApi.reducer,
   },
@@ -25,6 +27,13 @@ const store = configureStore({
 
 setupListeners(store.dispatch)
 
-export { store, createTeam, deleteTeam, addPokemon, removePokemon }
+export {
+  store,
+  createTeam,
+  deleteTeam,
+  addPokemon,
+  removePokemon,
+  loadMorePage,
+}
 export { useFetchPokemonQuery } from "./apis/pokeApi"
 export { useFetchPokemonDetailsQuery } from "./apis/pokeDetailsApi"

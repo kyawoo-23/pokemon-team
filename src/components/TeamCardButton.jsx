@@ -3,12 +3,12 @@ import { MdClose } from "react-icons/md"
 import { useRemoveMember } from "../hooks/useRemoveMember"
 
 const TeamCardButton = ({ isReplace, teamId, member }) => {
-  const { handleRemovePokemon } = useRemoveMember(member)
+  const { handleRemovePokemon } = useRemoveMember()
 
   const handleReplace = () => {}
 
   const handleRemove = () => {
-    handleRemovePokemon(teamId)
+    handleRemovePokemon(teamId, member)
   }
 
   return (
@@ -19,9 +19,9 @@ const TeamCardButton = ({ isReplace, teamId, member }) => {
       onClick={isReplace ? handleReplace : handleRemove}
     >
       {isReplace ? (
-        <BsArrowRepeat className="text-active h-6 w-6" />
+        <BsArrowRepeat className='text-active h-6 w-6' />
       ) : (
-        <MdClose className="text-active h-6 w-6" />
+        <MdClose className='text-active h-6 w-6' />
       )}
     </button>
   )

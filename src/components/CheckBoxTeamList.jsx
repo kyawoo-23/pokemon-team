@@ -23,18 +23,18 @@ const CheckBoxTeamList = ({
   }, [])
 
   return (
-    <div className="flex items-center text-active gap-5 cursor-pointer">
+    <div className='flex items-center text-active gap-5 cursor-pointer'>
       <input
-        type="checkbox"
+        type='checkbox'
         value={teamId}
         id={teamId}
-        className="w-6 h-6 outline-none cursor-pointer"
+        className='w-6 h-6 outline-none cursor-pointer'
         checked={isChecked}
         onChange={(e) => handleCheckBox(e.target.value)}
       />
       <label
         htmlFor={teamId}
-        className="w-full text-lg cursor-pointer select-none"
+        className='w-full text-lg cursor-pointer select-none'
       >
         {teamName}
       </label>
