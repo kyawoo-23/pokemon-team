@@ -8,7 +8,8 @@ const PokeCard = ({ name }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const { data, error, isFetching } = useFetchPokemonDetailsQuery(name)
 
-  const handleAddToTeam = () => {
+  const handleAddToTeam = (e) => {
+    e.preventDefault()
     setModalOpen(true)
   }
 

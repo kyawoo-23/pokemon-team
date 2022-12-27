@@ -14,7 +14,7 @@ const TeamCard = ({ teamName, teamId, members }) => {
   }
 
   return (
-    <div className='basis-full bg-inactive rounded-xl p-5 mr-auto'>
+    <div className='basis-full bg-cardBgHover drop-shadow rounded-xl p-5 mr-auto'>
       <div className='flex items-center justify-between'>
         <h2 className='text-xl text-primary font-medium'>{teamName}</h2>
         <button onClick={() => handleDeleteTeam(teamId)}>

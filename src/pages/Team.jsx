@@ -30,7 +30,7 @@ const Team = () => {
             />
           ))}
           <div
-            className='fixed bottom-10 right-10 h-12 w-12 bg-primary rounded-full grid place-content-center cursor-pointer'
+            className='fixed bottom-10 right-10 h-12 w-12 bg-primary drop-shadow-md rounded-full grid place-content-center cursor-pointer transition-all'
             onClick={handleModal}
           >
             <MdOutlineAddCircle className='text-inactive h-10 w-10 hover:text-active transition-all' />

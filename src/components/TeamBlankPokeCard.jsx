@@ -1,5 +1,5 @@
 import React from "react"
-import { HiPlus } from "react-icons/hi"
+import { MdAdd } from "react-icons/md"
 import { useAddMember } from "../hooks/useAddMember"
 
 const TeamBlankPokeCard = ({ teamId }) => {
@@ -11,11 +11,11 @@ const TeamBlankPokeCard = ({ teamId }) => {
 
   return (
     <div
-      className="border-2 border-dashed border-primary rounded-xl flex flex-col items-center justify-center py-16 grow cursor-pointer"
+      className='border-2 border-dashed border-secondary rounded-xl flex flex-col items-center justify-center py-16 grow cursor-pointer'
       onClick={handleAddMember}
     >
-      <HiPlus className="text-primary h-20 w-20" />
-      <p className="font-medium mt-2">add Pokemon</p>
+      <MdAdd className='text-primary h-20 w-20' />
+      <p className='font-medium mt-2'>add Pokemon</p>
     </div>
   )
 }
