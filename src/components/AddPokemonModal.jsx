@@ -65,7 +65,7 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
         className='bg-primary rounded-md p-5 flex flex-col gap-y-8'
         onClick={(e) => e.stopPropagation()}
       >
-        <div className='flex items-center justify-between gap-5 md:gap-28'>
+        <div className='flex items-center justify-between gap-16 md:gap-28'>
           <h1 className='text-xl text-active font-medium'>
             Add <span className='capitalize'>{pokeName}</span> to...
           </h1>

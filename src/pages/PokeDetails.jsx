@@ -33,8 +33,11 @@ const PokeDetails = () => {
       {modalOpen && (
         <AddPokemonModal pokeName={name} setModalOpen={setModalOpen} />
       )}
-      <div className='flex items-center w-full' style={styles.gradient}>
-        <div className='p-16 bg-primary bg-opacity-95 flex flex-col gap-8 h-full'>
+      <div
+        className='grid grid-cols-2 md:grid-cols-3 items-center w-full'
+        style={styles.gradient}
+      >
+        <div className='px-4 py-8 md:p-6 lg:p-16 bg-primary bg-opacity-95 flex flex-col gap-8 h-full col-span-2 md:col-span-1 order-2 md:order-1'>
           <h1 className='text-2xl text-active font-bold capitalize'>{name}</h1>
           <div className='flex items-center justify-end gap-3'>
             {data?.types.map(({ type }, idx) => (
@@ -50,12 +53,10 @@ const PokeDetails = () => {
           <div className='mt-3'>
             {data?.stats.map(({ stat, base_stat }, idx) => (
               <div
-                className='w-full flex items-center justify-between gap-x-8 mb-1'
+                className='w-full flex items-center justify-between gap-x-4 md:gap-x-8 mb-3 md:mb-1'
                 key={idx}
               >
-                <h4 className='text-active text-lg capitalize'>
-                  {stat.name} -
-                </h4>
+                <h4 className='text-active text-lg capitalize'>{stat.name}</h4>
                 <p className='text-inactive text-md'>{base_stat}</p>
               </div>
             ))}
@@ -67,7 +68,7 @@ const PokeDetails = () => {
             Add to team
           </button>
         </div>
-        <div className='mx-auto p-5'>
+        <div className='mx-auto p-5 col-span-2'>
           {isLoading ? (
             <Loader />
           ) : (
