@@ -24,8 +24,8 @@ const CreateTeamOnlyModal = ({ setModalOpen }) => {
         className='bg-primary rounded-md p-5 flex flex-col gap-y-8'
         onClick={(e) => e.stopPropagation()}
       >
-        <div className='flex items-center justify-between'>
-          <h1 className='mr-64 text-xl text-active font-medium'>
+        <div className='flex items-center justify-between gap-5 md:gap-28'>
+          <h1 className='text-xl text-active font-medium'>
             Give your team a name!
           </h1>
           <button onClick={handleModalClose}>
@@ -42,7 +42,7 @@ const CreateTeamOnlyModal = ({ setModalOpen }) => {
             autoFocus
           />
           <input
-            className='ml-auto w-1/4 border border-inactive p-2 text-inactive cursor-pointer font-medium rounded-md hover:bg-inactive hover:text-primary transition-all'
+            className='ml-auto w-fit border border-inactive py-2 px-4 text-inactive cursor-pointer font-medium rounded-md hover:bg-inactive hover:text-primary transition-all'
             type='submit'
             value='Create'
           />

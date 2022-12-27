@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import { useFetchPokemonDetailsQuery } from "../store"
 import AddPokemonModal from "./AddPokemonModal"
 import Loader from "./Loader"
@@ -16,7 +17,8 @@ const PokeCard = ({ name }) => {
       {modalOpen && (
         <AddPokemonModal pokeName={name} setModalOpen={setModalOpen} />
       )}
-      <div
+      <Link
+        to={`pokemon/${name}`}
         className={`border-2 border-secondary bg-cardBg rounded-2xl p-5 flex flex-col gap-y-4 cursor-pointer hover:bg-cardBgHover transition-all`}
       >
         {isFetching ? (
@@ -39,7 +41,7 @@ const PokeCard = ({ name }) => {
         >
           Add to team
         </button>
-      </div>
+      </Link>
     </>
   )
 }

@@ -20,17 +20,10 @@ const Home = () => {
         window.innerHeight + Math.ceil(window.pageYOffset) >=
         document.body.offsetHeight
       ) {
+        console.log("Fetching more data...")
         setPage(page + 1)
         dispatch(loadMorePage())
       }
-
-      // const scrolledToBottom =
-      //   window.innerHeight + window.scrollY >= document.body.offsetHeight
-      // if (scrolledToBottom && !isFetching) {
-      //   console.log("Fetching more data...")
-      //   setPage(page + 1)
-      //   dispatch(loadMorePage())
-      // }
     }
 
     document.addEventListener("scroll", onScroll)

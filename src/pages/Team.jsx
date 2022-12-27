@@ -17,7 +17,7 @@ const Team = () => {
   }
 
   return (
-    <Layout title="My teams">
+    <Layout title='My teams'>
       {modalOpen && <CreateTeamOnlyModal setModalOpen={setModalOpen} />}
       {teamList.length !== 0 ? (
         <>
@@ -30,18 +30,18 @@ const Team = () => {
             />
           ))}
           <div
-            className="fixed bottom-10 right-10 h-12 w-12 bg-primary rounded-full grid place-content-center cursor-pointer"
+            className='fixed bottom-10 right-10 h-12 w-12 bg-primary rounded-full grid place-content-center cursor-pointer'
             onClick={handleModal}
           >
-            <MdOutlineAddCircle className="text-inactive h-10 w-10 hover:text-active transition-all" />
+            <MdOutlineAddCircle className='text-inactive h-10 w-10 hover:text-active transition-all' />
           </div>
         </>
       ) : (
         <div
-          className="basis-full mt-8 border-8 border-inactive border-dashed p-20 cursor-pointer text-inactive hover:text-secondary transition-all"
+          className='basis-full mt-8 border-4 md:border-8 border-inactive border-dashed p-[15%] cursor-pointer text-inactive hover:text-secondary transition-all'
           onClick={handleModal}
         >
-          <p className="text-center text-4xl uppercase font-bold">
+          <p className='text-center text-2xl md:text-4xl uppercase font-bold'>
             Create Team
           </p>
         </div>
