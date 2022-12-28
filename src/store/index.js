@@ -40,5 +40,8 @@ export {
   loadMorePage,
   callToast,
 }
-export { useFetchPokemonQuery } from "./apis/pokeApi"
+export {
+  useFetchPokemonQuery,
+  useFetchPokemonSpeciesQuery,
+} from "./apis/pokeApi"
 export { useFetchPokemonDetailsQuery } from "./apis/pokeDetailsApi"

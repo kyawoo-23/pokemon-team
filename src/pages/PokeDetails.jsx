@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
-import { useFetchPokemonDetailsQuery } from "../store"
+import {
+  useFetchPokemonDetailsQuery,
+  useFetchPokemonSpeciesQuery,
+} from "../store"
 import Loader from "../components/Loader"
 import AddPokemonModal from "../components/AddPokemonModal"
 import { typeBgColor } from "../../constants/typeBgColor"
@@ -9,6 +12,8 @@ import PokeStats from "../components/PokeStats"
 const PokeDetails = () => {
   const { name } = useParams()
   const { data, error, isLoading } = useFetchPokemonDetailsQuery(name)
+  const { data: species, isLoading: isSpeciesLoading } =
+    useFetchPokemonSpeciesQuery(name)
   const [modalOpen, setModalOpen] = useState(false)
 
   let styles = {
@@ -44,7 +49,13 @@ const PokeDetails = () => {
             />
           )}
         </div>
-        {!isLoading && <PokeStats data={data} setModalOpen={setModalOpen} />}
+        {!isLoading && !isSpeciesLoading && (
+          <PokeStats
+            data={data}
+            species={species}
+            setModalOpen={setModalOpen}
+          />
+        )}
       </div>
     </>
   )

@@ -19,7 +19,10 @@ export const pokeApi = createApi({
         return currentArg !== previousArg
       },
     }),
+    fetchPokemonSpecies: builder.query({
+      query: (name) => `pokemon-species/${name}`,
+    }),
   }),
 })
 
-export const { useFetchPokemonQuery } = pokeApi
+export const { useFetchPokemonQuery, useFetchPokemonSpeciesQuery } = pokeApi

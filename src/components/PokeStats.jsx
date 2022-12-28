@@ -1,10 +1,11 @@
 import React from "react"
 
-const PokeStats = ({ data, setModalOpen }) => {
+const PokeStats = ({ data, species, setModalOpen }) => {
   const handleAddToTeam = () => {
     setModalOpen(true)
   }
 
+  console.log()
   return (
     <div className='px-4 py-8 md:p-6 lg:p-16 bg-primary bg-opacity-95 flex flex-col gap-8 h-full col-span-2 md:col-span-1'>
       <h1 className='text-2xl text-active font-bold capitalize'>
@@ -32,6 +33,9 @@ const PokeStats = ({ data, setModalOpen }) => {
           </div>
         ))}
       </div>
+      <p className='text-inactive'>
+        {species.flavor_text_entries[0].flavor_text}
+      </p>
       <button
         className='mt-5 border-2 border-inactive w-full rounded-lg uppercase font-medium text-lg p-1 text-inactive hover:bg-inactive hover:text-primary transition-all'
         onClick={handleAddToTeam}
