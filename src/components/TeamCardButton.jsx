@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom"
 import { BsArrowRepeat } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
 import { useRemoveMember } from "../hooks/useRemoveMember"
+import { useCallToast } from "../hooks/useCallToast"
 
 const TeamCardButton = ({ isReplace, teamId, member }) => {
   const navigate = useNavigate()
   const { handleRemovePokemon } = useRemoveMember()
+  const { handleCallToast } = useCallToast()
 
   const handleReplace = (e) => {
     e.preventDefault()
@@ -15,6 +17,7 @@ const TeamCardButton = ({ isReplace, teamId, member }) => {
   const handleRemove = (e) => {
     e.preventDefault()
     handleRemovePokemon(teamId, member)
+    handleCallToast(`${member} has been removed`)
   }
 
   return (

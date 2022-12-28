@@ -3,10 +3,12 @@ import BackDrop from "./BackDrop"
 import { MdClose } from "react-icons/md"
 import { useState } from "react"
 import { useCreateTeam } from "../hooks/useCreateTeam"
+import { useCallToast } from "../hooks/useCallToast"
 
 const CreateTeamOnlyModal = ({ setModalOpen }) => {
   const [teamName, setTeamName] = useState("")
   const { handleNewTeam } = useCreateTeam()
+  const { handleCallToast } = useCallToast()
 
   const handleModalClose = () => {
     setModalOpen(false)
@@ -15,6 +17,7 @@ const CreateTeamOnlyModal = ({ setModalOpen }) => {
   const handleCreateTeam = (e) => {
     e.preventDefault()
     handleNewTeam(teamName)
+    handleCallToast(`team, ${teamName} created`)
     setModalOpen(false)
   }
 

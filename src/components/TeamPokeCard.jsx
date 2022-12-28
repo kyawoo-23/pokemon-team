@@ -9,7 +9,7 @@ const TeamPokeCard = ({ member, teamId }) => {
   return (
     <Link
       to={`/pokemon/${member}`}
-      className='bg-cardBg hover:bg-cardBgHover border-2 border-primary rounded-xl flex flex-col gap-y-3 items-center cursor-pointer p-3'
+      className='bg-cardBg hover:bg-cardBgHover border-2 border-primary rounded-xl flex flex-col gap-y-3 items-center cursor-pointer p-3 max-sm:w-full'
     >
       {isFetching ? (
         <p>Loading {member} img</p>

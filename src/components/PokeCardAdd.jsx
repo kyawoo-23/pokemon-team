@@ -1,6 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { useAddMember } from "../hooks/useAddMember"
+import { useCallToast } from "../hooks/useCallToast"
 import { useFetchPokemonDetailsQuery } from "../store"
 import Loader from "./Loader"
 
@@ -8,10 +9,12 @@ const PokeCardAdd = ({ name, teamId }) => {
   const navigate = useNavigate()
   const { data, error, isFetching } = useFetchPokemonDetailsQuery(name)
   const { handleAddPokemon } = useAddMember()
+  const { handleCallToast } = useCallToast()
 
   const handleAddToTeam = (e) => {
     e.preventDefault()
     handleAddPokemon(teamId, name)
+    handleCallToast(`${name} is added`)
     navigate("/teams")
   }
 

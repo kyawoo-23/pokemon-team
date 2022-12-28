@@ -1,6 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { useReplaceMember } from "../hooks/useReplaceMember"
+import { useCallToast } from "../hooks/useCallToast"
 import { useFetchPokemonDetailsQuery } from "../store"
 import Loader from "./Loader"
 
@@ -8,10 +9,12 @@ const PokeCardReplace = ({ teamId, oldMem, name }) => {
   const navigate = useNavigate()
   const { data, error, isFetching } = useFetchPokemonDetailsQuery(name)
   const { handleReplacePokemon } = useReplaceMember()
+  const { handleCallToast } = useCallToast()
 
   const handleAddToTeam = (e) => {
     e.preventDefault()
     handleReplacePokemon(teamId, oldMem, name)
+    handleCallToast(`${oldMem} is replaced with ${name}`)
     navigate("/teams")
   }
 

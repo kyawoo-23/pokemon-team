@@ -1,16 +1,18 @@
 import React from "react"
 import { AiFillDelete } from "react-icons/ai"
 import { useDispatch } from "react-redux"
+import { useCallToast } from "../hooks/useCallToast"
 import { deleteTeam } from "../store"
 import TeamBlankPokeCard from "./TeamBlankPokeCard"
 import TeamPokeCard from "./TeamPokeCard"
 
 const TeamCard = ({ teamName, teamId, members }) => {
   const dispatch = useDispatch()
-  console.log("members", members)
+  const { handleCallToast } = useCallToast()
 
   const handleDeleteTeam = (teamId) => {
     dispatch(deleteTeam(teamId))
+    handleCallToast(`${teamName} has been deleted`)
   }
 
   return (

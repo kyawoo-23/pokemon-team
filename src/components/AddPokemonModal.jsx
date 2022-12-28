@@ -7,6 +7,7 @@ import { useAddMember } from "../hooks/useAddMember"
 import { useGetTeamsList } from "../hooks/useGetTeamsList"
 import { useRemoveMember } from "../hooks/useRemoveMember"
 import CheckBoxTeamList from "./CheckBoxTeamList"
+import { useCallToast } from "../hooks/useCallToast"
 
 const AddPokemonModal = ({ setModalOpen, pokeName }) => {
   const [teamName, setTeamName] = useState("")
@@ -17,6 +18,7 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
   const teamsList = useGetTeamsList()
   const [selectedTeam, setSelectedTeam] = useState([])
   const [removedTeam, setRemovedTeam] = useState([])
+  const { handleCallToast } = useCallToast()
 
   const handleModalClose = () => {
     setShowCreateTeamSection(false)
@@ -28,8 +30,9 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
     if (teamName !== "") {
       handleNewTeam(teamName)
       handleAddPokemon(teamId, pokeName)
+      handleCallToast(`${pokeName} has been added to ${teamName}`)
     }
-    console.log("sele team", selectedTeam)
+
     selectedTeam?.map((stid) => {
       handleAddPokemon(stid, pokeName)
     })
@@ -37,6 +40,8 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
     removedTeam?.map((rtid) => {
       handleRemovePokemon(rtid, pokeName)
     })
+
+    teamName === "" && handleCallToast("Changes updated")
 
     setSelectedTeam([])
     setShowCreateTeamSection(false)

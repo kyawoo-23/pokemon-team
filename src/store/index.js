@@ -11,11 +11,13 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { pokeApi } from "./apis/pokeApi"
 import { pokeDetailsApi } from "./apis/pokeDetailsApi"
 import { pageSliceReducer, loadMorePage } from "./slices/pageSlice"
+import { toastSliceReducer, callToast } from "./slices/toastSlice"
 
 const store = configureStore({
   reducer: {
     teams: teamsSliceReducer,
     page: pageSliceReducer,
+    toast: toastSliceReducer,
     [pokeApi.reducerPath]: pokeApi.reducer,
     [pokeDetailsApi.reducerPath]: pokeDetailsApi.reducer,
   },
@@ -36,6 +38,7 @@ export {
   removePokemon,
   replacePokemon,
   loadMorePage,
+  callToast,
 }
 export { useFetchPokemonQuery } from "./apis/pokeApi"
 export { useFetchPokemonDetailsQuery } from "./apis/pokeDetailsApi"
