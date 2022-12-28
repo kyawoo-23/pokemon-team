@@ -1,13 +1,19 @@
+import { useNavigate } from "react-router-dom"
 import { BsArrowRepeat } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
 import { useRemoveMember } from "../hooks/useRemoveMember"
 
 const TeamCardButton = ({ isReplace, teamId, member }) => {
+  const navigate = useNavigate()
   const { handleRemovePokemon } = useRemoveMember()
 
-  const handleReplace = () => {}
+  const handleReplace = (e) => {
+    e.preventDefault()
+    navigate(`replace/${teamId}/${member}`)
+  }
 
-  const handleRemove = () => {
+  const handleRemove = (e) => {
+    e.preventDefault()
     handleRemovePokemon(teamId, member)
   }
 

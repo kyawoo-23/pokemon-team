@@ -24,14 +24,25 @@ const teamsSlice = createSlice({
       const pokeIdx = state[teamIdx].members.indexOf(member)
       state[teamIdx].members.splice(pokeIdx, 1)
     },
-    removeAllPokemon(state, { payload }) {
-      const { teamId } = payload
+    replacePokemon(state, { payload }) {
+      const { teamId, member, newMember } = payload
       const teamIdx = state.findIndex((s) => s.teamId === teamId)
-      state[teamIdx].members.length = 0
+      const memIdx = state[teamIdx].members.indexOf(member)
+      state[teamIdx].members[memIdx] = newMember
     },
+    // removeAllPokemon(state, { payload }) {
+    //   const { teamId } = payload
+    //   const teamIdx = state.findIndex((s) => s.teamId === teamId)
+    //   state[teamIdx].members.length = 0
+    // },
   },
 })
 
-export const { createTeam, deleteTeam, addPokemon, removePokemon } =
-  teamsSlice.actions
+export const {
+  createTeam,
+  deleteTeam,
+  addPokemon,
+  removePokemon,
+  replacePokemon,
+} = teamsSlice.actions
 export const teamsSliceReducer = teamsSlice.reducer

@@ -5,6 +5,7 @@ import {
   deleteTeam,
   addPokemon,
   removePokemon,
+  replacePokemon,
 } from "./slices/teamsSlice"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { pokeApi } from "./apis/pokeApi"
@@ -33,6 +34,7 @@ export {
   deleteTeam,
   addPokemon,
   removePokemon,
+  replacePokemon,
   loadMorePage,
 }
 export { useFetchPokemonQuery } from "./apis/pokeApi"
