@@ -4,7 +4,7 @@ import htmlPlugin from "vite-plugin-html-config"
 
 const htmlPluginOpt = {
   title: "Pokemon Team",
-  favicon: "./pikachu.png",
+  favicon: "/pikachu.png",
 }
 
 // https://vitejs.dev/config/

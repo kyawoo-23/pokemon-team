@@ -7,6 +7,7 @@ import ReplacePokemonFromTeam from "./pages/ReplacePokemonFromTeam"
 import Team from "./pages/Team"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import NotFound from "./pages/NotFound"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             element={<ReplacePokemonFromTeam />}
           />
           <Route path='/pokemon/:name' element={<PokeDetails />} />
+          <Route path='/*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
