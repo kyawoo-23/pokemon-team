@@ -5,8 +5,9 @@ const toastSlice = createSlice({
   name: "toast",
   initialState: { value: "" },
   reducers: {
-    callToast(state, action) {
-      toast(action.payload)
+    callToast(state, { payload }) {
+      const { msg, delay } = payload
+      toast(msg, { delay })
     },
   },
 })

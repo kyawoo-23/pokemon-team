@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { toast } from "react-toastify"
 
 const teamsSlice = createSlice({
   name: "teams",
@@ -14,8 +15,13 @@ const teamsSlice = createSlice({
     addPokemon(state, { payload }) {
       const { teamId, pokeName } = payload
       const index = state.findIndex((s) => s.teamId === teamId)
+      if (state[index].members.length === 6) {
+        toast(`there are already 6 pokemons in ${state[index].teamName}`)
+        return
+      }
       if (!state[index].members.includes(pokeName)) {
         state[index].members.push(pokeName)
+        toast(`${pokeName} has been added to ${state[index].teamName}`)
       }
     },
     removePokemon(state, { payload }) {

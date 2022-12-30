@@ -10,7 +10,7 @@ const Team = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
   const teamList = useSelector((state) => state.teams)
-  console.log(teamList)
+  // console.log(teamList)
 
   const handleModal = () => {
     setModalOpen(true)

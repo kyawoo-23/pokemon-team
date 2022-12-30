@@ -30,7 +30,6 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
     if (teamName !== "") {
       handleNewTeam(teamName)
       handleAddPokemon(teamId, pokeName)
-      handleCallToast(`${pokeName} has been added to ${teamName}`)
     }
 
     selectedTeam?.map((stid) => {
@@ -41,7 +40,7 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
       handleRemovePokemon(rtid, pokeName)
     })
 
-    teamName === "" && handleCallToast("Changes updated")
+    teamName === "" && handleCallToast("changes updated", 500)
 
     setSelectedTeam([])
     setShowCreateTeamSection(false)
@@ -52,11 +51,11 @@ const AddPokemonModal = ({ setModalOpen, pokeName }) => {
     if (selectedTeam.includes(teamId)) {
       setSelectedTeam((prev) => prev.filter((p) => p !== teamId))
       setRemovedTeam((prev) => [...prev, teamId])
-      console.log("remove")
+      // console.log("remove")
     } else {
       setSelectedTeam((prev) => [...prev, teamId])
       setRemovedTeam((prev) => prev.filter((p) => p !== teamId))
-      console.log("add")
+      // console.log("add")
     }
   }
 

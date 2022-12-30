@@ -5,7 +5,6 @@ const PokeStats = ({ data, species, setModalOpen }) => {
     setModalOpen(true)
   }
 
-  console.log()
   return (
     <div className='px-4 py-8 md:p-6 lg:p-16 bg-primary bg-opacity-95 flex flex-col gap-8 h-full col-span-2 md:col-span-1'>
       <h1 className='text-2xl text-active font-bold capitalize'>
